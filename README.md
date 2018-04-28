@@ -6,7 +6,7 @@ The aim of this project is to have a script capable of providing the first syste
 
 In the end, this script will also take a list of softwares you want to uninstall (usually pre-installed softwares are just a waste of space, so this will automate their uninstallation) and provide minor configurations for softwares installed (ie: deactivate root account for ssh connections,...).
 
-See actual CHANGELOG for the list of implemented features.
+See actual [CHANGELOG](CHANGELOG.md) for the list of implemented features.
 
 ## Installation
 ### First step
