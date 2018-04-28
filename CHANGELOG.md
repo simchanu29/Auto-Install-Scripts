@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Suppression of selected pre-installed softwares before full-upgrade (to save some time, bandwidth,...).
 - GUI for selecting softwares to install.
 
+### Added
 - Test the internet connection with a ping to exit the program faster in case that there is no connection.
 
 
