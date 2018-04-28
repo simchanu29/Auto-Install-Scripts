@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # Generating error logfile:
-LOGFILE="log_"$(date '+%Y-%m-%d-%H-%M-%S')".log"
+LOGFILE="Install_"$(date '+%Y-%m-%d-%H-%M-%S')".log"
 touch ${LOGFILE}
 
 # Adding Canonical's partner repository:
