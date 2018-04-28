@@ -1,6 +1,7 @@
 # Auto-Install-Scripts
 ![Status](https://img.shields.io/badge/Status-In%20Development-red.svg)
 ![Distrib](https://img.shields.io/badge/Ubuntu-16.04-brightgreen.svg)
+[![Version](https://img.shields.io/badge/Version-0.1.0-yellow.svg)](https://github.com/fcebron/Auto-Install-Scripts/releases/tag/v0.1.0)
 
 The aim of this project is to have a script capable of providing the first system upgraade and install a pre-defined list of softwares.
 
