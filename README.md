@@ -2,8 +2,10 @@
 ![Status](https://img.shields.io/badge/Status-In%20Development-red.svg)
 ![Distrib](https://img.shields.io/badge/Ubuntu-16.04-brightgreen.svg)
 
-The aim of this project is to have a script capable of providing the first system upgraade and install a pre-defined list of softwares. 
+The aim of this project is to have a script capable of providing the first system upgraade and install a pre-defined list of softwares.
+
 In the end, this script will also take a list of softwares you want to uninstall (usually pre-installed softwares are just a waste of space, so this will automate their uninstallation) and provide minor configurations for softwares installed (ie: deactivate root account for ssh connections,...).
+
 See actual CHANGELOG for the list of implemented features.
 
 ## Installation
