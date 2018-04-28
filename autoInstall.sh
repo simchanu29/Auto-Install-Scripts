@@ -1,10 +1,5 @@
 #! /bin/bash
 
-# CYAN_U=\e[4m\e[36m
-# GREEN_B=\e[1m\e[32m
-# RED_B=\e[1m\e[31m
-# DEFAULT=\e[0m
-
 # Adding Canonical's partner repository:
 echo -e "\e[1m\e[32m==> \e[1m\e[37mAdding Canonical's partner repository\e[0m"
 sed -i.bak "/^# deb .*partner/ s/^# //" /etc/apt/sources.list
