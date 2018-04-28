@@ -1,7 +1,7 @@
 #! /bin/bash
 
 
-#               Auto Install Script
+#               Auto Install Scripts
 # =========================================================
 # This script performs a full upgrade of the system, then
 # install a pre-defined list of softwares!
