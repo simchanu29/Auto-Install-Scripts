@@ -20,6 +20,8 @@ Clone this repository:
 ### Third step
 Launch the script in super-user mode:
 
-```cd Auto-Install-Scripts
-   chmod +x autoInstall.sh
-   sudo ./autoInstall.sh```
+```cd Auto-Install-Scripts```
+
+```chmod +x autoInstall.sh```
+
+```sudo ./autoInstall.sh```
