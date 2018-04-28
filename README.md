@@ -5,6 +5,7 @@
 Script for automating softwares installation on Ubuntu
 
 Currently it simply adds canonical's partner repository and updates the system!
+
 Improvements upcoming.
 
 ## Installation
