@@ -1,4 +1,7 @@
 # Auto-Install-Scripts
+![Status](https://img.shields.io/badge/Status-In%20Development-red.svg)
+![Distrib](https://img.shields.io/badge/Ubuntu-16.04-brightgreen.svg)
+
 Script for automating softwares installation on Ubuntu
 
 Currently it simply adds canonical's partner repository and updates the system!
