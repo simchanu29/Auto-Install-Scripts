@@ -8,9 +8,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Parsing of .md file containing a list of softwares to install
 - Installation of the list of softwares.
 - Specific installation of softwares which are not in the distribution's repositories.
-- Test the internet connection with a ping to exit the program faster in case that there is no connection.
 - Suppression of selected pre-installed softwares before full-upgrade (to save some time, bandwidth,...).
 - GUI for selecting softwares to install.
+
+- Test the internet connection with a ping to exit the program faster in case that there is no connection.
 
 
 ## [0.1.0] - 2018-04-28
