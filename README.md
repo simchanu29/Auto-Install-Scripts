@@ -10,17 +10,27 @@ In the end, this script will also take a list of softwares you want to uninstall
 See actual [CHANGELOG](CHANGELOG.md) for the list of implemented features.
 
 ## Installation
-### First step
+### Git installation
 Install git:
 
 ```sudo apt update && sudo apt install git```
 
-### Second step
 Clone this repository:
 
 ```git clone https://github.com/fcebron/Auto-Install-Scripts.git```
 
-### Third step
+Launch the script in super-user mode:
+
+```cd Auto-Install-Scripts && chmod +x autoInstall.sh```
+
+```sudo ./autoInstall.sh```
+
+### Wget installation
+Download and extract the latest version (chose between the 2 following ways to do so):
+
+- Zip file: ```wget https://github.com/fcebron/Auto-Install-Scripts/archive/v0.1.0.zip && unzip v0.1.0.zip```
+- Tar.gz file : ```wget https://github.com/fcebron/Auto-Install-Scripts/archive/v0.1.0.tar.gz && tar zxvf v0.1.0.tar.gz```
+
 Launch the script in super-user mode:
 
 ```cd Auto-Install-Scripts && chmod +x autoInstall.sh```
