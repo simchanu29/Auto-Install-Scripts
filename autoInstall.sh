@@ -90,5 +90,6 @@ aptitude full-upgrade -y 2>> ${LOGFILE}
 
 echo ""
 echo "" >> ${LOGFILE}
-echo -e "\e[1m\e[32m==> \e[1m\e[37mEnd of the script!\e[0m\n"
-echo -e "\e[1m\e[32m==> \e[1m\e[37mEnd of the script!\e[0m\n" >> ${LOGFILE}
+echo -e "\e[1m\e[32m==> \e[1m\e[37mEnd of the script!\e[0m"
+echo -e "\e[1m\e[32m==> \e[1m\e[37mEnd of the script!\e[0m" >> ${LOGFILE}
+echo -e "  \e[4m\e[94m--> See ${LOGFILE} for more informations\e[0m\n"
