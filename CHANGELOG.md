@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 - [x] Test the internet connection with a ping to exit the program faster in case that there is no connection.
+- [x] Root check before executing full program.
 - [ ] Parsing the .md file containing a list of softwares to install.
 - [ ] Installation of the list of softwares.
 - [ ] Specific installation of softwares which are not in the distribution's repositories.
