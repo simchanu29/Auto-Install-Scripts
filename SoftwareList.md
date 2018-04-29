@@ -7,6 +7,7 @@
 - [x] meld
 - [x] git
 - [ ] build-essential
+- [ ] curl
 - [x] valgrind
 - [x] arduino
 
