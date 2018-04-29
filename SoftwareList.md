@@ -6,7 +6,7 @@
 - [x] vim
 - [x] meld
 - [x] git
-- [x] build-essential
+- [ ] build-essential
 - [x] valgrind
 - [x] arduino
 
