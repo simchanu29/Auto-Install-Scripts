@@ -15,6 +15,22 @@ LOGFILE="Install_"$(date '+%Y-%m-%d-%H-%M-%S')".log"
 touch ${LOGFILE}
 
 
+# Checking if root:
+# =========================================================
+echo ""
+echo -e "\e[1m\e[32m==> \e[1m\e[37mChecking if root:\e[0m"
+echo -e "\e[1m\e[32m==> \e[1m\e[37mChecking if root:\e[0m" >> ${LOGFILE}
+if [ "$EUID" -ne 0 ]; then
+    echo -e "\e[31m  --> You need to run this program as root:\e[0m"
+    echo "    sudo ./autoInstall.sh"
+    echo -e "\e[31m  --> Exiting program!\e[0m"
+    echo -e "\e[31m  --> You need to run this program as root:\e[0m" >> ${LOGFILE}
+    echo "    sudo ./autoInstall.sh" >> ${LOGFILE}
+    echo -e "\e[31m  --> Exiting program!\e[0m" >> ${LOGFILE}
+    exit
+fi
+
+
 # Checking the internet connection:
 # =========================================================
 echo ""
