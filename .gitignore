@@ -1,0 +1,7 @@
+# Logs from previous install
+############################
+*.log
+
+# Tests scripts
+###############
+test*.sh
