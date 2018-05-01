@@ -1,9 +1,11 @@
 # Logs from previous install
 ############################
+log/*
+log/
 *.log
-*.txt
 temp/*
 temp/
+*.txt
 
 # Tests scripts
 ###############

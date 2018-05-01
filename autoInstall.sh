@@ -289,12 +289,52 @@ fi
 
 
 
-# Verification: TODO
+# Summary:
 # =========================================================
-# echo ""
-# echo "" >> ${LOGFILE}
-# echo -e "\e[1m\e[32m==> \e[1m\e[37mInstalling Softwares:\e[0m"
-# echo -e "\e[1m\e[32m==> \e[1m\e[37mInstalling Softwares:\e[0m" >> ${LOGFILE}
+echo ""
+echo "" >> ${LOGFILE}
+echo -e "\e[1m\e[32m==> \e[1m\e[37mSummary:\e[0m"
+echo -e "\e[1m\e[32m==> \e[1m\e[37mSummary:\e[0m" >> ${LOGFILE}
+
+# Checking if the softwares which were planned to be uninstalled are still present on the system:
+echo -e "\e[1m\e[36m  --> Checking uninstall list!\e[0m"
+echo -e "\e[1m\e[36m  --> Checking uninstall list!\e[0m" >> ${LOGFILE}
+N_LINES=$(wc -l < temp/willBeUninstalled.txt)
+for ((i=1; i<=${N_LINES}; i++))
+do
+    SOFT=$(sed "${i}q;d" temp/willBeUninstalled.txt)
+    if hash ${SOFT} 2>/dev/null; then
+        echo -e "\e[1m\e[0m\t\t${SOFT}\t\t[\e[31mPresent\e[0m]"
+        echo -e "\e[1m\e[0m\t\t${SOFT}\t\t[\e[31mPresent\e[0m]" >> ${LOGFILE}
+    # else
+        # echo -e "\e[1m\e[92m  --> ${SOFT} is not installed!\e[0m"
+        # echo -e "\e[1m\e[92m  --> ${SOFT} is not installed!\e[0m" >> ${LOGFILE}
+    fi
+done
+
+# Checking if the softwares which were planned to be installed are present on the system:
+echo -e "\e[1m\e[36m  --> Checking install list!\e[0m"
+echo -e "\e[1m\e[36m  --> Checking install list!\e[0m" >> ${LOGFILE}
+N_LINES=$(wc -l < temp/willBeInstalled.txt)
+for ((i=1; i<=${N_LINES}; i++))
+do
+    SOFT=$(sed "${i}q;d" temp/willBeInstalled.txt)
+    if hash ${SOFT} 2>/dev/null; then
+        echo -e "\e[1m\e[0m\t\t${SOFT}\t\t[\e[92mInstalled\e[0m]"
+        echo -e "\e[1m\e[0m\t\t${SOFT}\t\t[\e[92mInstalled\e[0m]" >> ${LOGFILE}
+    else
+        # Metapackages don't validate the previous test
+        dpkg-query -s ${SOFT} > /dev/null 2> /dev/null
+        if [ $? == 0 ]; then
+            echo -e "\e[1m\e[0m\t\t${SOFT}\t\t[\e[92mInstalled\e[0m]"
+            echo -e "\e[1m\e[0m\t\t${SOFT}\t\t[\e[92mInstalled\e[0m]" >> ${LOGFILE}
+        else
+            # Definitively not installed!
+            echo -e "\e[1m\e[0m\t\t${SOFT}\t\t[\e[31mMissing\e[0m]"
+            echo -e "\e[1m\e[0m\t\t${SOFT}\t\t[\e[31mMissing\e[0m]" >> ${LOGFILE}
+        fi
+    fi
+done
 
 
 
