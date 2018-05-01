@@ -7,10 +7,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [Unreleased]
 - [x] Test the internet connection with a ping to exit the program faster in case that there is no connection.
 - [x] Root check before executing full program.
-- [ ] Parsing the .md file containing a list of softwares to install.
-- [ ] Installation of the list of softwares.
+- [x] Parsing the .md file containing a list of softwares to install.
+- [x] Installation of the list of softwares.
+- [x] Suppression of selected pre-installed softwares before full-upgrade (to save some time, bandwidth,...).
+- [ ] Check before installation of removal if the software is already present on the system, to optimize the program.
+- [ ] Check before exiting the program if all desired softwares have been installed.
 - [ ] Specific installation of softwares which are not in the distribution's repositories.
-- [ ] Suppression of selected pre-installed softwares before full-upgrade (to save some time, bandwidth,...).
 - [ ] Add Debian support.
 - [ ] Add Archlinux support.
 - [ ] Add Fedora support.
