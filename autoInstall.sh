@@ -9,10 +9,33 @@
 # =========================================================
 
 
-# Generating error logfile:
+echo -e "\t##################################################"
+echo -e "\t##                                              ##"
+echo -e "\t##           Auto-Install-Scripts               ##"
+echo -e "\t##               Version 0.3.0                  ##"
+echo -e "\t##                                              ##"
+echo -e "\t##################################################"
+
+
+
+# Generating logfile:
 # =========================================================
-LOGFILE="Install_"$(date '+%Y-%m-%d-%H-%M-%S')".log"
+if [ ! -d logs ]; then
+    mkdir logs
+fi
+LOGFILE="logs/Install_"$(date '+%Y-%m-%d-%H-%M-%S')".log"
 touch ${LOGFILE}
+
+
+
+# Generating temp folder:
+# =========================================================
+mkdir temp
+touch temp/temp.txt
+TEMPFILE1=temp/temp.txt
+touch temp/temp2.txt
+TEMPFILE2=temp/temp2.txt
+
 
 
 # Checking if root:
@@ -28,7 +51,11 @@ if [ "$EUID" -ne 0 ]; then
     echo "    sudo ./autoInstall.sh" >> ${LOGFILE}
     echo -e "\e[31m  --> Exiting program!\e[0m" >> ${LOGFILE}
     exit
+else
+    echo -e "\e[1m\e[92m  --> Done!\e[0m"
+    echo -e "\e[1m\e[92m  --> Done!\e[0m" >> ${LOGFILE}
 fi
+
 
 
 # Checking the internet connection:
@@ -40,8 +67,8 @@ echo -e "\e[1m\e[32m==> \e[1m\e[37mChecking if the computer is connected to the 
 
 CONNECTION=$(ping -q -c 2 www.ubuntu.com > /dev/null && echo 0 || echo 1)
 if [ ${CONNECTION} -eq 0 ]; then
-    echo -e "\e[1m\e[36m  --> Connected to the internet!\e[0m\n"
-    echo -e "\e[1m\e[36m  --> Connected to the internet!\e[0m\n" >> ${LOGFILE}
+    echo -e "\e[1m\e[92m  --> Connected to the internet!\e[0m"
+    echo -e "\e[1m\e[92m  --> Connected to the internet!\e[0m" >> ${LOGFILE}
 else
     echo -e "\e[1m\e[31m  --> Not connected to the internet!\e[0m"
     echo -e "\e[1m\e[31m  --> Exiting program!\e[0m"
@@ -50,12 +77,23 @@ else
     exit 0
 fi
 
- 
+
+
 # Adding Canonical's partner repository:
 # =========================================================
+echo ""
+echo "" >> ${LOGFILE}
 echo -e "\e[1m\e[32m==> \e[1m\e[37mAdding Canonical's partner repository:\e[0m"
 echo -e "\e[1m\e[32m==> \e[1m\e[37mAdding Canonical's partner repository:\e[0m" >> ${LOGFILE}
 sed -i.bak "/^# deb .*partner/ s/^# //" /etc/apt/sources.list 2>> ${LOGFILE}
+if [ $? == 0 ]; then
+    echo -e "\e[1m\e[92m  --> Done!\e[0m"
+    echo -e "\e[1m\e[92m  --> Done!\e[0m" >> ${LOGFILE}
+else
+    echo -e "\e[1m\e[31m  --> Error!\e[0m"
+    echo -e "\e[1m\e[31m  --> Error!\e[0m" >> ${LOGFILE}
+fi
+
 
 
 # Checking if aptitude is already present in the system:
@@ -65,17 +103,37 @@ echo "" >> ${LOGFILE}
 echo -e "\e[1m\e[32m==> \e[1m\e[37mChecking Aptitude:\e[0m"
 echo -e "\e[1m\e[32m==> \e[1m\e[37mChecking Aptitude:\e[0m" >> ${LOGFILE}
 if hash aptitude 2>/dev/null; then
-    echo -e "\e[1m\e[36m  --> aptitude is already installed!\e[0m\n"
-    echo -e "\e[1m\e[36m  --> aptitude is already installed!\e[0m\n" >> ${LOGFILE}
+    echo -e "\e[1m\e[92m  --> aptitude is already installed!\e[0m"
+    echo -e "\e[1m\e[92m  --> aptitude is already installed!\e[0m" >> ${LOGFILE}
 else
     # Install aptitude for futures installations:
-    echo -e "\e[1m\e[31m  --> aptitude is not installed!\e[0m\n"
+    echo -e "\e[1m\e[31m  --> aptitude is not installed!\e[0m"
+    echo ""
     echo -e "\e[1m\e[32m==> \e[1m\e[37mInstalling Aptitude:\e[0m"
-    echo -e "\e[1m\e[31m  --> aptitude is not installed!\e[0m\n" >> ${LOGFILE}
+    echo -e "\e[1m\e[31m  --> aptitude is not installed!\e[0m" >> ${LOGFILE}
+    echo "" >> ${LOGFILE}
     echo -e "\e[1m\e[32m==> \e[1m\e[37mInstalling Aptitude:\e[0m" >> ${LOGFILE}
     apt update 2>> ${LOGFILE}
     apt install -y aptitude 2>> ${LOGFILE}
+    if [ $? == 0 ]; then
+        echo -e "\e[1m\e[92m  --> Aptitude installed!\e[0m"
+        echo -e "\e[1m\e[92m  --> Aptitude installed!\e[0m" >> ${LOGFILE}
+    else
+        echo -e "\e[1m\e[31m  --> Error! Exiting!\e[0m"
+        echo -e "\e[1m\e[31m  --> Error! Exiting!\e[0m" >> ${LOGFILE}
+        exit
+    fi
 fi
+
+echo ""
+echo ""
+echo -e "\t##################################################"
+echo -e "\t##                                              ##"
+echo -e "\t##     The following steps could be long...     ##"
+echo -e "\t##     --> It is time to take a break/\e[5mcoffee\e[0m    ##"
+echo -e "\t##                                              ##"
+echo -e "\t##################################################"
+echo ""
 
 
 # Parsing software list:
@@ -85,21 +143,32 @@ echo "" >> ${LOGFILE}
 echo -e "\e[1m\e[32m==> \e[1m\e[37mParsing software list:\e[0m"
 echo -e "\e[1m\e[32m==> \e[1m\e[37mParsing software list:\e[0m" >> ${LOGFILE}
 # Delete lines that begin with a specific character:
-sed '/^#/d' config/SoftwareList.md > dummy.txt
-cp dummy.txt dummy2.txt
-echo > dummy.txt
-sed '/^$/d' dummy2.txt > dummy.txt
-rm dummy2.txt
+sed '/^#/d' config/SoftwareList.md > ${TEMPFILE1}
+cp ${TEMPFILE1} ${TEMPFILE2}
+sed '/^$/d' ${TEMPFILE2} > ${TEMPFILE1}
 # Generate the install list from config/SoftwareList.md:
-awk '/[x]/ { print $3 }' dummy.txt > willBeInstalled.txt
+awk '/[x]/ { print $3 }' ${TEMPFILE1} > temp/willBeInstalled.txt
 # Generate uninstall list from config/SoftwareList.md:
-awk '$3 == "]" { print $4 }' dummy.txt > willBeUninstalled.txt
-INSTALL_LIST=$(sed ':a;N;$!ba;s/\n/ /g' willBeInstalled.txt)
-UNINSTALL_LIST=$(sed ':a;N;$!ba;s/\n/ /g' willBeUninstalled.txt)
-echo -e "\e[1m\e[36m  --> Will be removed:\e[0m"
-echo -e "\e[1m\e[31m      ${UNINSTALL_LIST}\e[0m\n"
-echo -e "\e[1m\e[36m  --> Will be installed:\e[0m"
-echo -e "\e[1m\e[92m      ${INSTALL_LIST}\e[0m\n"
+awk '$3 == "]" { print $4 }' ${TEMPFILE1} > temp/willBeUninstalled.txt
+INSTALL_LIST=$(sed ':a;N;$!ba;s/\n/ /g' temp/willBeInstalled.txt)
+# UNINSTALL_LIST=$(sed ':a;N;$!ba;s/\n/ /g' willBeUninstalled.txt)
+# echo -e "\e[1m\e[36m  --> Will be removed:\e[0m"
+# echo -e "\e[1m\e[31m      ${UNINSTALL_LIST}\e[0m\n"
+# echo -e "\e[1m\e[36m  --> Will be removed:\e[0m" >> ${LOGFILE}
+# echo -e "\e[1m\e[31m      ${UNINSTALL_LIST}\e[0m\n" >> ${LOGFILE}
+# echo -e "\e[1m\e[36m  --> Will be installed:\e[0m"
+# echo -e "\e[1m\e[92m      ${INSTALL_LIST}\e[0m"
+# echo -e "\e[1m\e[36m  --> Will be installed:\e[0m" >> ${LOGFILE}
+# echo -e "\e[1m\e[92m      ${INSTALL_LIST}\e[0m" >> ${LOGFILE}
+if [ $? == 0 ]; then
+        echo -e "\e[1m\e[92m  --> Done!\e[0m"
+        echo -e "\e[1m\e[92m  --> Done!\e[0m" >> ${LOGFILE}
+    else
+        echo -e "\e[1m\e[31m  --> Error!\e[0m"
+        echo -e "\e[1m\e[31m  --> Error!\e[0m" >> ${LOGFILE}
+        exit
+    fi
+
 
 
 # Removing un-wanted softwares:
@@ -108,7 +177,39 @@ echo ""
 echo "" >> ${LOGFILE}
 echo -e "\e[1m\e[32m==> \e[1m\e[37mRemoving un-wanted softwares:\e[0m"
 echo -e "\e[1m\e[32m==> \e[1m\e[37mRemoving un-wanted softwares:\e[0m" >> ${LOGFILE}
-sudo aptitude purge -y $UNINSTALL_LIST 2>> ${LOGFILE}
+
+# Emptying "temp.txt":
+echo -n > ${TEMPFILE1}
+
+# Checking if the softwares that are planned to be uninstalled are already present on the system:
+echo -e "\e[1m\e[36m  --> Checking the system!\e[0m"
+echo -e "\e[1m\e[36m  --> Checking the system!\e[0m" >> ${LOGFILE}
+N_LINES=$(wc -l < temp/willBeUninstalled.txt)
+for ((i=1; i<=${N_LINES}; i++))
+do
+    SOFT=$(sed "${i}q;d" temp/willBeUninstalled.txt)
+    if hash ${SOFT} 2>/dev/null; then
+        echo ${SOFT} >> ${TEMPFILE1}
+        echo -e "\e[1m\e[0m\t\t${SOFT}\t\t[\e[31mInstalled\e[0m]"
+        echo -e "\e[1m\e[0m\t\t${SOFT}\t\t[\e[31mInstalled\e[0m]" >> ${LOGFILE}
+    # else
+        # echo -e "\e[1m\e[92m  --> ${SOFT} is not installed!\e[0m"
+        # echo -e "\e[1m\e[92m  --> ${SOFT} is not installed!\e[0m" >> ${LOGFILE}
+    fi
+done
+UNINSTALL_LIST=$(sed ':a;N;$!ba;s/\n/ /g' ${TEMPFILE1})
+if [ -s ${TEMPFILE1} ]
+then 
+    echo -e "\e[1m\e[36m  --> Will be removed:\e[0m"
+    echo -e "\e[1m\e[31m      ${UNINSTALL_LIST}\e[0m"
+    echo -e "\e[1m\e[36m  --> Will be removed:\e[0m" >> ${LOGFILE}
+    echo -e "\e[1m\e[31m      ${UNINSTALL_LIST}\e[0m" >> ${LOGFILE}
+    sudo aptitude purge -y $UNINSTALL_LIST 2>> ${LOGFILE}
+else
+    echo -e "\e[1m\e[92m  --> Nothing will be removed!\e[0m"
+    echo -e "\e[1m\e[92m  --> Nothing will be removed!\e[0m" >> ${LOGFILE}
+fi
+
 
 
 # Update and Upgrade system:
@@ -118,8 +219,24 @@ echo "" >> ${LOGFILE}
 echo -e "\e[1m\e[32m==> \e[1m\e[37mUpdating full system:\e[0m"
 echo -e "\e[1m\e[32m==> \e[1m\e[37mUpdating full system:\e[0m" >> ${LOGFILE}
 aptitude update 2>> ${LOGFILE}
+if [ $? == 0 ]; then
+    echo -e "\e[1m\e[92m  --> Update Done!\e[0m"
+    echo -e "\e[1m\e[92m  --> Update Done!\e[0m" >> ${LOGFILE}
+else
+    echo -e "\e[1m\e[31m  --> Update Error!\e[0m"
+    echo -e "\e[1m\e[31m  --> Update Error!\e[0m" >> ${LOGFILE}
+fi
+
 aptitude full-upgrade -y 2>> ${LOGFILE}
 # aptitude safe-upgrade -y 2>> ${LOGFILE}  # In case of issues with full-upgrade
+if [ $? == 0 ]; then
+    echo -e "\e[1m\e[92m  --> Upgrade Done!\e[0m"
+    echo -e "\e[1m\e[92m  --> Upgrade Done!\e[0m" >> ${LOGFILE}
+else
+    echo -e "\e[1m\e[31m  --> Update Error!\e[0m"
+    echo -e "\e[1m\e[31m  --> Update Error!\e[0m" >> ${LOGFILE}
+fi
+
 
 
 # Installing Softwares:
@@ -128,7 +245,48 @@ echo ""
 echo "" >> ${LOGFILE}
 echo -e "\e[1m\e[32m==> \e[1m\e[37mInstalling Softwares:\e[0m"
 echo -e "\e[1m\e[32m==> \e[1m\e[37mInstalling Softwares:\e[0m" >> ${LOGFILE}
-sudo aptitude install -y $INSTALL_LIST 2>> ${LOGFILE}
+
+# Emptying "temp.txt":
+echo -n > ${TEMPFILE1}
+
+# Checking if the softwares that are planned to be installed are already present on the system:
+echo -e "\e[1m\e[36m  --> Checking the system!\e[0m"
+echo -e "\e[1m\e[36m  --> Checking the system!\e[0m" >> ${LOGFILE}
+N_LINES=$(wc -l < temp/willBeInstalled.txt)
+for ((i=1; i<=${N_LINES}; i++))
+do
+    SOFT=$(sed "${i}q;d" temp/willBeInstalled.txt)
+    if hash ${SOFT} 2>/dev/null; then
+        echo -e "\e[1m\e[0m\t\t${SOFT}\t\t[\e[92mInstalled\e[0m]"
+        echo -e "\e[1m\e[0m\t\t${SOFT}\t\t[\e[92mInstalled\e[0m]" >> ${LOGFILE}
+    else
+        # Metapackages don't validate the previous test
+        dpkg-query -s ${SOFT} > /dev/null 2> /dev/null
+        if [ $? == 0 ]; then
+            echo -e "\e[1m\e[0m\t\t${SOFT}\t\t[\e[92mInstalled\e[0m]"
+            echo -e "\e[1m\e[0m\t\t${SOFT}\t\t[\e[92mInstalled\e[0m]" >> ${LOGFILE}
+        else
+            # Definitively not installed!
+            echo ${SOFT} >> ${TEMPFILE1}
+            echo -e "\e[1m\e[0m\t\t${SOFT}\t\t[\e[31mMissing\e[0m]"
+            echo -e "\e[1m\e[0m\t\t${SOFT}\t\t[\e[31mMissing\e[0m]" >> ${LOGFILE}
+        fi
+    fi
+done
+
+INSTALL_LIST=$(sed ':a;N;$!ba;s/\n/ /g' ${TEMPFILE1})
+if [ -s ${TEMPFILE1} ]
+then 
+    echo -e "\e[1m\e[36m  --> Will be installed:\e[0m"
+    echo -e "\e[1m\e[92m      ${INSTALL_LIST}\e[0m"
+    echo -e "\e[1m\e[36m  --> Will be installed:\e[0m" >> ${LOGFILE}
+    echo -e "\e[1m\e[92m      ${INSTALL_LIST}\e[0m" >> ${LOGFILE}
+    sudo aptitude install -y $INSTALL_LIST 2>> ${LOGFILE}
+else
+    echo -e "\e[1m\e[92m  --> Nothing will be installed!\e[0m"
+    echo -e "\e[1m\e[92m  --> Nothing will be installed!\e[0m" >> ${LOGFILE}
+fi
+
 
 
 # Cleaning folder:
@@ -137,7 +295,15 @@ echo ""
 echo "" >> ${LOGFILE}
 echo -e "\e[1m\e[32m==> \e[1m\e[37mCleaning folder:\e[0m"
 echo -e "\e[1m\e[32m==> \e[1m\e[37mCleaning folder:\e[0m" >> ${LOGFILE}
-rm -f *.txt 2>>${LOGFILE}
+rm -rf temp/ 2>>${LOGFILE}
+if [ $? == 0 ]; then
+    echo -e "\e[1m\e[92m  --> Done!\e[0m"
+    echo -e "\e[1m\e[92m  --> Done!\e[0m" >> ${LOGFILE}
+else
+    echo -e "\e[1m\e[31m  --> Error!\e[0m"
+    echo -e "\e[1m\e[31m  --> Error!\e[0m" >> ${LOGFILE}
+fi
+
 
 
 # End of the script:
