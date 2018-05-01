@@ -1,6 +1,7 @@
 # Logs from previous install
 ############################
 *.log
+*.txt
 
 # Tests scripts
 ###############

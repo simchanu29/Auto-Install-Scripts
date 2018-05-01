@@ -4,10 +4,11 @@
 - [x] vim
 - [x] meld
 - [x] git
-- [ ] build-essential
-- [ ] curl
+- [x] build-essential
+- [x] curl
 - [x] valgrind
 - [x] arduino
+- [ ] gedit
 
 ## Miscellaneous
 - [x] htop
