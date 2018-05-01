@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 - [ ] Specific installation of softwares which are not in the distribution's repositories.
+- [ ] Adding config files for some specific packages like vim, ssh, redshift,...
 - [ ] Add Debian support.
 - [ ] Add Archlinux support.
 - [ ] Add Fedora support.
