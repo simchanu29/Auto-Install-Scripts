@@ -6,7 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 - [x] Check before installation of removal if the software is already present on the system, to optimize the program.
-- [ ] Check before exiting the program if all desired softwares have been installed.
+- [x] Check before exiting the program if all desired softwares have been installed.
 - [ ] Specific installation of softwares which are not in the distribution's repositories.
 - [ ] Add Debian support.
 - [ ] Add Archlinux support.
