@@ -289,6 +289,15 @@ fi
 
 
 
+# Verification: TODO
+# =========================================================
+# echo ""
+# echo "" >> ${LOGFILE}
+# echo -e "\e[1m\e[32m==> \e[1m\e[37mInstalling Softwares:\e[0m"
+# echo -e "\e[1m\e[32m==> \e[1m\e[37mInstalling Softwares:\e[0m" >> ${LOGFILE}
+
+
+
 # Cleaning folder:
 # =========================================================
 echo ""
