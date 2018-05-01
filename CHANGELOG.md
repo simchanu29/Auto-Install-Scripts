@@ -18,8 +18,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Test the internet connection with a ping to exit the program faster in case that there is no connection.
 - Root check before executing full program.
-- Parsing the .md file containing a list of softwares to install.
-- Installation of the list of softwares.
+- Parsing the .md file containing a list of software to install.
+- Installation of the list of software.
 - Suppression of selected pre-installed softwares before full-upgrade (to save some time, bandwidth,...).
 
 
@@ -28,6 +28,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Automatic detection and installation (if missing) of Aptitude.
 - Adding Canonical's partner repository to the system.
 - Full Upgrade of the system.
-- Colored output of this script.
+- Coloured output of this script.
 - Dated logfile of each installation.
 - Tutorial explaining how to use this script.
