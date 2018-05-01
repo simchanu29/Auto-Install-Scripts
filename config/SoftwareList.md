@@ -32,7 +32,6 @@
 - [x] texlive-math-extra
 - [x] texlive-fonts-extra
 - [x] texlive-generic-extra
-- [x] texlive-most
 - [x] texmaker
 
 ## Bureautic
@@ -61,7 +60,6 @@
 - [x] picocom
 - [x] bsdtar
 - [x] byobu
-- [x] keepassxc
 - [x] gufw
 - [x] zsh
 - [x] screen
