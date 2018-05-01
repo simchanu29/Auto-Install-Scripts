@@ -16,7 +16,6 @@
 - [x] python-flake8
 - [x] python3-flake8
 - [x] ipython3
-- [ ] gedit
 
 ## Internet
 - [x] thunderbird
@@ -66,3 +65,7 @@
 - [x] redshift
 ### For KDE:
 - [x] plasma-applet-redshift-control
+
+
+## Remove
+- [ ] gedit
