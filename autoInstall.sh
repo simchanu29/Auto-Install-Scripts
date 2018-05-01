@@ -127,12 +127,12 @@ fi
 
 echo ""
 echo ""
-echo -e "\t##################################################"
+echo -e "\t\e[94m##################################################"
 echo -e "\t##                                              ##"
-echo -e "\t##     The following steps could be long...     ##"
-echo -e "\t##     --> It is time to take a break/\e[5mcoffee\e[0m    ##"
+echo -e "\t##     The following steps could be long\e[5m...\e[0m\e[94m     ##"
+echo -e "\t##     --> It is time to take a break/\e[5m\e[93mcoffee\e[0m\e[94m    ##"
 echo -e "\t##                                              ##"
-echo -e "\t##################################################"
+echo -e "\t##################################################\e[0m"
 echo ""
 
 
