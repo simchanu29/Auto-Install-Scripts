@@ -16,3 +16,13 @@
 - [x] mc
 - [x] ranger
 - [x] terminator
+- [x] hunspell-fr
+- [x] mat
+- [x] cherrytree
+- [x] synapse
+- [x] redshift
+# For KDE:
+- [x] plasma-applet-redshift-control
+
+
+thunderbird thunderbird-locale-fr chromium-browser
