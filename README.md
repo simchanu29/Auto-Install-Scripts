@@ -1,7 +1,7 @@
 # Auto-Install-Scripts
 ![Status](https://img.shields.io/badge/Status-In%20Development-red.svg)
 ![Distrib](https://img.shields.io/badge/Ubuntu-16.04-brightgreen.svg)
-[![Vaadin Directory](https://img.shields.io/vaadin-directory/v/vaadinvaadin-grid.svg)](https://github.com/fcebron/Auto-Install-Scripts/releases/tag/v0.2.0)
+[![Version](https://img.shields.io/badge/Version-0.2.1-yellow.svg)](https://github.com/fcebron/Auto-Install-Scripts/releases/tag/v0.2.0)
 
 The aim of this project is to have a script capable of providing the first system upgrade and install a pre-defined [list of softwares](SoftwareList.md). This program is design to be easily customisable.
 
