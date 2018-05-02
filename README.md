@@ -1,7 +1,7 @@
 # Terraform
 ![Status](https://img.shields.io/badge/Status-In%20Development-red.svg)
 ![Distrib](https://img.shields.io/badge/Ubuntu-16.04-brightgreen.svg)
-[![Version](https://img.shields.io/badge/Version-latest%20release-yellow.svg)](https://github.com/fcebron/Auto-Install-Scripts/releases/latest)
+[![Version](https://img.shields.io/badge/Version-latest%20release-yellow.svg)](https://github.com/fcebron/Terraform/releases/latest)
 
 The aim of this project is to have a script capable of providing the first system upgrade and install a pre-defined [list of softwares](SoftwareList.md). This program is design to be easily customisable.
 
