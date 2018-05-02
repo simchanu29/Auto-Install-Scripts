@@ -21,7 +21,7 @@ Clone this repository:
 
 Launch the script in super-user mode:
 
-```cd Auto-Install-Scripts && chmod +x terraform.sh```
+```cd Terraform && chmod +x terraform.sh```
 
 ```sudo ./terraform.sh```
 
