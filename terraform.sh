@@ -1,7 +1,7 @@
 #! /bin/bash
 
 
-#               Auto Install Scripts
+#                       Terraform
 # =========================================================
 # This script performs a full upgrade of the system, then
 # install a pre-defined list of softwares!
@@ -11,8 +11,8 @@
 
 echo -e "\t##################################################"
 echo -e "\t##                                              ##"
-echo -e "\t##           Auto-Install-Scripts               ##"
-echo -e "\t##               Version 0.3.0                  ##"
+echo -e "\t##                 Terraform                    ##"
+echo -e "\t##                   0.3.0                      ##"
 echo -e "\t##                                              ##"
 echo -e "\t##################################################"
 
@@ -361,4 +361,8 @@ echo ""
 echo "" >> ${LOGFILE}
 echo -e "\e[1m\e[32m==> \e[1m\e[37mEnd of the script!\e[0m"
 echo -e "\e[1m\e[32m==> \e[1m\e[37mEnd of the script!\e[0m" >> ${LOGFILE}
-echo -e "  \e[4m\e[94m--> See ${LOGFILE} for more informations\e[0m\n"
+echo -e "  \e[4m\e[94m--> See ${LOGFILE} for more informations\e[0m"
+
+echo ""
+echo -e "You need to restart your system to see if everything had worked well!"
+
