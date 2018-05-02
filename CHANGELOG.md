@@ -5,8 +5,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-- [x] Autoremove old dependencies.
-- [x] Asks for reboot at the end.
 - [ ] Specific installation of softwares which are not in the distribution's repositories.
 - [ ] Adding config files for some specific packages like vim, ssh, redshift,...
 - [ ] Add Debian support.
@@ -15,9 +13,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - [ ] GUI for selecting softwares to install.
 
 
-## [[0.3.0](https://github.com/fcebron/Terraform/releases/tag/Terraform_0.3.0)] - 2018-05-01
+## [[0.4.0](https://github.com/fcebron/Terraform/releases/tag/Terraform_0.4.0)] - 2018-05-02
 ### Added
 - New name!
+- Autoremove old dependencies.
+- Asks for reboot at the end.
+
+
+## [[0.3.0](https://github.com/fcebron/Terraform/releases/tag/Terraform_0.3.0)] - 2018-05-01
+### Added
 - Check before installation of removal if the software is already present on the system, to optimize the program.
 - Check before exiting the program if all desired software have been installed.
 
