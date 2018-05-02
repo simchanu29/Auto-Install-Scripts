@@ -28,11 +28,11 @@ Launch the script in super-user mode:
 ### Wget installation
 Download and extract the latest version (chose between the 2 following ways to do so):
 
-- Zip file: ```wget https://github.com/fcebron/Auto-Install-Scripts/archive/v0.3.0.zip && unzip v0.3.0.zip```
-- Tar.gz file : ```wget https://github.com/fcebron/Auto-Install-Scripts/archive/v0.3.0.tar.gz && tar zxvf v0.3.0.tar.gz```
+- Zip file: ```wget https://github.com/fcebron/Terraform/archive/Terraform_0.3.0.zip && unzip Terraform_0.3.0.zip```
+- Tar.gz file : ```wget https://github.com/fcebron/Terraform/archive/Terraform_0.3.0.tar.gz && tar zxvf Terraform_0.3.0.tar.gz```
 
 Launch the script in super-user mode:
 
-```cd Auto-Install-Scripts && chmod +x autoInstall.sh```
+```cd Terraform && chmod +x terraform.sh```
 
-```sudo ./autoInstall.sh```
+```sudo ./terraform.sh```
