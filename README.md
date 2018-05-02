@@ -17,7 +17,7 @@ Install git:
 
 Clone this repository:
 
-```git clone https://github.com/fcebron/Auto-Install-Scripts.git```
+```git clone https://github.com/fcebron/Terraform.git```
 
 Launch the script in super-user mode:
 
