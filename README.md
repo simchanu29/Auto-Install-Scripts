@@ -21,9 +21,9 @@ Clone this repository:
 
 Launch the script in super-user mode:
 
-```cd Auto-Install-Scripts && chmod +x autoInstall.sh```
+```cd Auto-Install-Scripts && chmod +x terraform.sh```
 
-```sudo ./autoInstall.sh```
+```sudo ./terraform.sh```
 
 ### Wget installation
 Download and extract the latest version (chose between the 2 following ways to do so):
