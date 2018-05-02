@@ -39,4 +39,4 @@ Launch the script in super-user mode:
 
 ## Disclaimer
 This script has been tested on:
-* kde neon 5.12
+* KDE neon 5.12
