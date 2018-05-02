@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- [x] Autoremove old dependencies.
+- [x] Asks for reboot at the end.
 - [ ] Specific installation of softwares which are not in the distribution's repositories.
 - [ ] Adding config files for some specific packages like vim, ssh, redshift,...
 - [ ] Add Debian support.
