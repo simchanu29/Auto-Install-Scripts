@@ -289,6 +289,23 @@ fi
 
 
 
+# Removing old dependencies which could have been forgotten:
+# =========================================================
+echo ""
+echo "" >> ${LOGFILE}
+echo -e "\e[1m\e[32m==> \e[1m\e[37mRemoving old dependencies which could have been forgotten:\e[0m"
+echo -e "\e[1m\e[32m==> \e[1m\e[37mRemoving old dependencies which could have been forgotten:\e[0m" >> ${LOGFILE}
+sudo apt autoremove 2>> ${LOGFILE}
+if [ $? == 0 ]; then
+    echo -e "\e[1m\e[92m  --> Done!\e[0m"
+    echo -e "\e[1m\e[92m  --> Done!\e[0m" >> ${LOGFILE}
+else
+    echo -e "\e[1m\e[31m  --> Error!\e[0m"
+    echo -e "\e[1m\e[31m  --> Error!\e[0m" >> ${LOGFILE}
+fi
+
+
+
 # Summary:
 # =========================================================
 echo ""
@@ -363,6 +380,10 @@ echo -e "\e[1m\e[32m==> \e[1m\e[37mEnd of the script!\e[0m"
 echo -e "\e[1m\e[32m==> \e[1m\e[37mEnd of the script!\e[0m" >> ${LOGFILE}
 echo -e "  \e[4m\e[94m--> See ${LOGFILE} for more informations\e[0m"
 
-echo ""
-echo -e "You need to restart your system to see if everything had worked well!"
 
+
+# Reboot:
+# =========================================================
+echo ""
+read -p "Take some time to save your work, then press ENTER to restart the system!"
+reboot

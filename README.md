@@ -36,3 +36,7 @@ Launch the script in super-user mode:
 ```cd Terraform && chmod +x terraform.sh```
 
 ```sudo ./terraform.sh```
+
+## Disclaimer
+This script has been tested on:
+* kde neon 5.12
