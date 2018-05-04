@@ -1,7 +1,7 @@
 # Terraformate
 ![Status](https://img.shields.io/badge/Status-In%20Development-red.svg)
 ![Distrib](https://img.shields.io/badge/Ubuntu-16.04-brightgreen.svg)
-[![Version](https://img.shields.io/badge/Version-latest%20release-yellow.svg)](https://github.com/fcebron/Terraform/releases/latest)
+[![Version](https://img.shields.io/badge/Version-latest%20release-yellow.svg)](https://github.com/fcebron/Terraformate/releases/latest)
 
 The aim of this project is to have a script capable of providing the first system upgrade and install a pre-defined [list of softwares](config/SoftwareList.md). This program is design to be easily customisable.
 
@@ -28,8 +28,8 @@ Launch the script in super-user mode:
 ### Wget installation
 Download and extract the latest version (chose between the 2 following ways to do so):
 
-- Zip file: ```wget https://github.com/fcebron/Terraformate/archive/Terraform_0.3.0.zip && unzip Terraform_0.3.0.zip```
-- Tar.gz file : ```wget https://github.com/fcebron/Terraformate/archive/Terraform_0.3.0.tar.gz && tar zxvf Terraform_0.3.0.tar.gz```
+- Zip file: ```wget https://github.com/fcebron/Terraformate/releases/tag/Terraformate_0.4.0.zip && unzip Terraformate_0.4.0.zip```
+- Tar.gz file : ```wget https://github.com/fcebron/Terraformate/releases/tag/Terraformate_0.4.0.tar.gz && tar zxvf Terraformate_0.4.0.tar.gz```
 
 Launch the script in super-user mode:
 
