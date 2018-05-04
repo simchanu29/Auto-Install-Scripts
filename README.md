@@ -17,25 +17,25 @@ Install git:
 
 Clone this repository:
 
-```git clone https://github.com/fcebron/Terraform.git```
+```git clone https://github.com/fcebron/Terraformate.git```
 
 Launch the script in super-user mode:
 
-```cd Terraform && chmod +x terraform.sh```
+```cd Terraformate && chmod +x terraformate.sh```
 
-```sudo ./terraform.sh```
+```sudo ./terraformate.sh```
 
 ### Wget installation
 Download and extract the latest version (chose between the 2 following ways to do so):
 
-- Zip file: ```wget https://github.com/fcebron/Terraform/archive/Terraform_0.3.0.zip && unzip Terraform_0.3.0.zip```
-- Tar.gz file : ```wget https://github.com/fcebron/Terraform/archive/Terraform_0.3.0.tar.gz && tar zxvf Terraform_0.3.0.tar.gz```
+- Zip file: ```wget https://github.com/fcebron/Terraformate/archive/Terraform_0.3.0.zip && unzip Terraform_0.3.0.zip```
+- Tar.gz file : ```wget https://github.com/fcebron/Terraformate/archive/Terraform_0.3.0.tar.gz && tar zxvf Terraform_0.3.0.tar.gz```
 
 Launch the script in super-user mode:
 
-```cd Terraform && chmod +x terraform.sh```
+```cd Terraformate && chmod +x terraformate.sh```
 
-```sudo ./terraform.sh```
+```sudo ./terraformate.sh```
 
 ## Disclaimer
 This script has been tested on:
