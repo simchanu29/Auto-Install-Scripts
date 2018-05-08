@@ -39,5 +39,6 @@ Launch the script in super-user mode:
 
 ## Disclaimer
 This script isn't compatible with snaps, because I don't use it. Don't exptect to see this feature in the upcoming versions!
+
 This script has been tested on:
 * KDE neon 5.12
