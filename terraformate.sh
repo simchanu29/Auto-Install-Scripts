@@ -296,7 +296,7 @@ echo ""
 echo "" >> ${LOGFILE}
 echo -e "\e[1m\e[32m==> \e[1m\e[37mRemoving old dependencies which could have been forgotten:\e[0m"
 echo -e "\e[1m\e[32m==> \e[1m\e[37mRemoving old dependencies which could have been forgotten:\e[0m" >> ${LOGFILE}
-sudo apt autoremove 2>> ${LOGFILE}
+apt autoremove 2>> ${LOGFILE}
 if [ $? == 0 ]; then
     echo -e "\e[1m\e[92m  --> Done!\e[0m"
     echo -e "\e[1m\e[92m  --> Done!\e[0m" >> ${LOGFILE}
