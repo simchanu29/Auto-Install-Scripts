@@ -42,7 +42,6 @@ TEMPFILE1=temp/temp.txt
 touch temp/temp2.txt
 TEMPFILE2=temp/temp2.txt
 
-function main () {
 
 # Checking if root:
 # =========================================================
