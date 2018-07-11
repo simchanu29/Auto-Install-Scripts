@@ -37,11 +37,14 @@ function loginfo () {
 # Color list
 # list on https://misc.flogisoft.com/bash/tip_colors_and_formatting
 BOL="\e[1m"
+BLI="\e[5m"
 GRE="\e[32m"
 LGR="\e[92m"
 CYA="\e[36m"
 GRA="\e[37m"
 RED="\e[31m"
+LYE="\e[93m"
+LBL="\e[94m"
 END="\e[0m"
 
 # Generating temp folder:
@@ -121,8 +124,8 @@ echo ""
 echo ""
 echo -e "\t\e[94m##################################################"
 echo -e "\t##                                              ##"
-echo -e "\t##     The following steps could be long\e[5m...${END}\e[94m     ##"
-echo -e "\t##     --> It is time to take a break/\e[5m\e[93mcoffee${END}\e[94m    ##"
+echo -e "\t##     The following steps could be long${BLI}...${END}${LBL}     ##"
+echo -e "\t##     --> It is time to take a break/${BLI}${LYE}coffee${END}${LBL}    ##"
 echo -e "\t##                                              ##"
 echo -e "\t##################################################${END}"
 echo ""
@@ -165,7 +168,6 @@ echo -n > ${TEMPFILE1}
 
 # Checking if the softwares that are planned to be uninstalled are already present on the system:
 loginfo "${BOL}${CYA}  --> Checking the system! ${END}"
-loginfo "${BOL}${CYA}  --> Checking the system! ${END}" >> ${LOGFILE}
 N_LINES=$(wc -l < temp/willBeUninstalled.txt)
 for ((i=1; i<=${N_LINES}; i++))
 do
@@ -319,8 +321,7 @@ fi
 
 # End of the script:
 # =========================================================
-echo ""
-echo "" >> ${LOGFILE}
+loginfo ""
 loginfo "${BOL}${GRE}==> ${BOL}${GRA}End of the script! ${END}"
 echo -e "  \e[4m\e[94m--> See ${LOGFILE} for more informations${END}"
 
