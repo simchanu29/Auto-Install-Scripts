@@ -10,6 +10,7 @@
 # =============================================================
 
 
+
 echo -e "###################################################################"
 echo -e "##   ___ ____ ____ ____ ____ ____ ____ ____ _  _ ____ ___ ____   ##"
 echo -e "##    |  |___ |__/ |__/ |__| |___ |  | |__/ |\/| |__|  |  |___   ##"
@@ -17,6 +18,7 @@ echo -e "##    |  |___ |  \ |  \ |  | |    |__| |  \ |  | |  |  |  |___   ##"
 echo -e "##   __________________________________________________________  ##"
 echo -e "###################################################################"
 echo -e "\t\t Version 0.4.0"
+
 
 
 # Generating logfile:
@@ -34,7 +36,10 @@ function loginfo () {
     echo -e $STRING >> ${LOGFILE}
 }
 
+
+
 # Color list
+# =========================================================
 # list on https://misc.flogisoft.com/bash/tip_colors_and_formatting
 BOL="\e[1m"
 BLI="\e[5m"
@@ -47,6 +52,8 @@ LYE="\e[93m"
 LBL="\e[94m"
 END="\e[0m"
 
+
+
 # Generating temp folder:
 # =========================================================
 mkdir temp
@@ -54,6 +61,8 @@ touch temp/temp.txt
 TEMPFILE1=temp/temp.txt
 touch temp/temp2.txt
 TEMPFILE2=temp/temp2.txt
+
+
 
 # Checking if root:
 # =========================================================
@@ -66,6 +75,7 @@ if [ "$EUID" -ne 0 ]; then
     exit
 else
     loginfo "${BOL}${LGR}  --> Done! ${END}"
+fi
 
 
 
