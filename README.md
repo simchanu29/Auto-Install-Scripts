@@ -37,6 +37,16 @@ Launch the script in super-user mode:
 
 ```sudo ./terraformate.sh```
 
+## Help
+Usage:
+sudo ./terraformate.sh [-h] [-n] [-r] [-l file]
+
+Arguments:
+    -h      Help menu
+    -n      No-reboot mode (the script will end without rebooting the computer). Warning! This argument is not compatible with the -r one.
+    -r      Reboot mode (the script will cause the reboot of the computer). Warning! this argument is not compatible with the -n one.
+    -l file Take file as the software list to install/uninstall. Default software list is: config/SoftwareList.md.
+
 ## Disclaimer
 This script isn't compatible with snaps, because I don't use it. Don't exptect to see this feature in the upcoming versions!
 
