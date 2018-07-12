@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - [ ] Add Archlinux support.
 - [ ] Add Fedora support.
 - [ ] GUI for selecting softwares to install.
+- [x] Adding some parameters for the reboot options and to add an external software list.
 
 
 ## [[0.4.0](https://github.com/fcebron/Terraform/releases/tag/Terraform_0.4.0)] - 2018-05-02
