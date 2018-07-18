@@ -57,13 +57,13 @@ function install_ws_dep () {
 
 function help_text () {
     echo ""
-    echo "xxx_install [flag [options]]"
+    echo "robot_install [flag [options]]"
     echo "Arguments"
     echo "-h : show help and exit"
     echo "-i : install additional feature"
     echo "    can : set up can interface"
     echo ""
-    echo "example : xxx_install -i can"
+    echo "example : robot_install -i can"
     echo ""
 }
 
@@ -80,7 +80,7 @@ function task_handler () {
         if [ "$EXEC" = "$INSTALL" ]; then echo ""; create_workspace; fi
     ;;
     "shell_init")
-        if [ "$EXEC" = "$INSTALL" ]; then echo ""; xxx_init; fi
+        if [ "$EXEC" = "$INSTALL" ]; then echo ""; robot_init; fi
         echo "Initialize environnement variables for ROS"
     ;;
     "gitmodules_init")
