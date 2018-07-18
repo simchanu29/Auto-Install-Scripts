@@ -8,4 +8,4 @@ You shouldn't add softwares from self-hosted sources to this list!
 
 For self-hosted softwares, the feature is upcoming.
 
-Once it is done, just launch the autoInstall.sh file!
+Once it is done, just launch the terraform.sh file!
