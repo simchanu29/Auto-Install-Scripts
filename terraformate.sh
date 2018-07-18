@@ -10,6 +10,67 @@
 # =============================================================
 
 
+# Color list
+# =========================================================
+# list on https://misc.flogisoft.com/bash/tip_colors_and_formatting
+BOL="\e[1m"
+BLI="\e[5m"
+GRE="\e[32m"
+LGR="\e[92m"
+CYA="\e[36m"
+GRA="\e[37m"
+RED="\e[31m"
+LYE="\e[93m"
+LBL="\e[94m"
+END="\e[0m"
+
+REBOOT=false
+NO_REBOOT=false
+SOFTWARE_LIST=config/SoftwareList.md
+
+HELP_MESSAGE="Usage:\n sudo ./terraformate.sh [-h] [-n] [-r] [-l file]\n\nArguments:\n\t-h\t\tHelp menu\n\t-n\t\tNo-reboot mode (the script will end without rebooting the computer). Warning! This argument is not compatible with the -r one.\n\t-r\t\tReboot mode (the script will cause the reboot of the computer). Warning! this argument is not compatible with the -n one.\n\t-l file\t\tTake file as the software list to install/uninstall. Default software list is: config/SoftwareList.md."
+
+
+
+# Extracting parameters:
+# =========================================================
+while getopts ":rnhl:" optname
+  do 
+    case "${optname}" in
+      "r")
+        REBOOT=true
+        echo "Will reboot automatically the computer after installations"
+        ;;
+      "n")
+        NO_REBOOT=true
+        echo "Will not reboot the computer after installations"
+        ;;
+      "l")
+	SOFTWARE_LIST=${OPTARG}
+        echo "The program will take the following file as a software list to install: ${SOFTWARE_LIST}"
+        ;;
+      "h")
+        echo -e "${HELP_MESSAGE}"
+        exit
+        ;;
+      "?")
+        echo "Unknown option ${OPTARG}"
+        echo -e "${HELP_MESSAGE}"
+        exit
+        ;;
+      ":")
+        echo "No arguments detected"
+        ;;
+      *)
+        echo "Error while processing options"
+        echo -e "${HELP_MESSAGE}"
+        exit
+        ;;
+    esac
+  done
+
+
+
 echo -e "###################################################################"
 echo -e "##   ___ ____ ____ ____ ____ ____ ____ ____ _  _ ____ ___ ____   ##"
 echo -e "##    |  |___ |__/ |__/ |__| |___ |  | |__/ |\/| |__|  |  |___   ##"
@@ -17,6 +78,22 @@ echo -e "##    |  |___ |  \ |  \ |  | |    |__| |  \ |  | |  |  |  |___   ##"
 echo -e "##   __________________________________________________________  ##"
 echo -e "###################################################################"
 echo -e "\t\t Version 0.4.0"
+
+
+
+# Checking if root:
+# =========================================================
+echo ""
+echo -e "${BOL}${GRE}==> ${BOL}${GRA}Checking if root:${END}"
+if [ "${EUID}" -ne 0 ]; then
+    echo -e "${RED}  --> You need to run this program as root:${END}"
+    echo -e "    sudo ./autoInstall.sh"
+    echo -e "${RED}  --> Exiting program! ${END}"
+    exit
+else
+   echo -e "${BOL}${LGR}  --> Done! ${END}"
+fi
+
 
 
 # Generating logfile:
@@ -34,18 +111,7 @@ function loginfo () {
     echo -e $STRING >> ${LOGFILE}
 }
 
-# Color list
-# list on https://misc.flogisoft.com/bash/tip_colors_and_formatting
-BOL="\e[1m"
-BLI="\e[5m"
-GRE="\e[32m"
-LGR="\e[92m"
-CYA="\e[36m"
-GRA="\e[37m"
-RED="\e[31m"
-LYE="\e[93m"
-LBL="\e[94m"
-END="\e[0m"
+
 
 # Generating temp folder:
 # =========================================================
@@ -54,18 +120,6 @@ touch temp/temp.txt
 TEMPFILE1=temp/temp.txt
 touch temp/temp2.txt
 TEMPFILE2=temp/temp2.txt
-
-# Checking if root:
-# =========================================================
-echo ""
-loginfo "${BOL}${GRE}==> ${BOL}${GRA}Checking if root:${END}"
-if [ "$EUID" -ne 0 ]; then
-    loginfo "${RED}  --> You need to run this program as root:${END}"
-    loginfo "    sudo ./autoInstall.sh"
-    loginfo "${RED}  --> Exiting program! ${END}"
-    exit
-else
-    loginfo "${BOL}${LGR}  --> Done! ${END}"
 
 
 
@@ -136,12 +190,12 @@ echo ""
 echo ""
 loginfo "${BOL}${GRE}==> ${BOL}${GRA}Parsing software list:${END}"
 # Delete lines that begin with a specific character:
-sed '/^#/d' config/SoftwareList.md > ${TEMPFILE1}
+sed '/^#/d' ${SOFTWARE_LIST} > ${TEMPFILE1}
 cp ${TEMPFILE1} ${TEMPFILE2}
 sed '/^$/d' ${TEMPFILE2} > ${TEMPFILE1}
-# Generate the install list from config/SoftwareList.md:
+# Generate the install list from SOFTWARE_LIST:
 awk '/[x]/ { print $3 }' ${TEMPFILE1} > temp/willBeInstalled.txt
-# Generate uninstall list from config/SoftwareList.md:
+# Generate uninstall list from SOFTWARE_LIST:
 awk '$3 == "]" { print $4 }' ${TEMPFILE1} > temp/willBeUninstalled.txt
 INSTALL_LIST=$(sed ':a;N;$!ba;s/\n/ /g' temp/willBeInstalled.txt)
 # UNINSTALL_LIST=$(sed ':a;N;$!ba;s/\n/ /g' willBeUninstalled.txt)
@@ -330,5 +384,21 @@ echo -e "  \e[4m\e[94m--> See ${LOGFILE} for more informations${END}"
 # Reboot:
 # =========================================================
 echo ""
-read -p "Take some time to save your work, then press ENTER to restart the system!"
-reboot
+if ${REBOOT}
+  then
+    if [ !${NO_REBOOT} ]
+      then
+        reboot
+    fi
+elif [ !${REBOOT} ]
+  then
+    if ${NO_REBOOT}
+      then
+        # Nothing
+        echo ""
+    elif [ !${NO_REBOOT} ]
+      then
+        read -p "Take some time to save your work, then press ENTER to restart the system!"
+        reboot
+    fi
+fi
