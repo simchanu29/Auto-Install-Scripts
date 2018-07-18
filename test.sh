@@ -12,6 +12,8 @@ INSTALL_CAN="0"
 FLAG="$1"
 ARGS="${@:2}"
 
+
+# Example task for CAN
 function setup_can () {
     echo "[CAN INSTALL] Setting up CAN connection"
     CAN_NAME="can0"
